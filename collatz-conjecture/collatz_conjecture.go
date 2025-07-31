@@ -9,22 +9,19 @@ func CollatzConjecture(n int) (int, error) {
 
 	// bottom-up approach (?)
 	arr := make([]int, 0, n)
+	
+	// base case
+	arr = append(arr, 0)
 
-	for num := 1; num <= n; num++ {
 
-		if num == 1 || num == 2 {
-			arr = append(arr, num-1)
-			continue
-		}
-
+	for num := 2; num <= n; num++ {
 		counter := 0
 		i := num
 		for i > 1 {
 			// check if index is exists
 			if i >= 0 && i-1 < len(arr) {
 				counter += arr[i-1]
-				i = 1
-				continue
+				break
 			} 
 
 			if i % 2 == 0 {
